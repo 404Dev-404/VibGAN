@@ -22,7 +22,7 @@ batch_sizes = {2: 16, 3: 16, 4: 16, 5: 16, 6: 16, 7: 8, 8: 4, 9: 2, 10: 1}
 train_step_ratio = {k: batch_sizes[2] / v for k, v in batch_sizes.items()}
 
 ds_train = keras.utils.image_dataset_from_directory(
-    "/content/drive/MyDrive/vibgan_dataset", label_mode=None, image_size=(64, 64), batch_size=32
+    "vibgan_dataset", label_mode=None, image_size=(64, 64), batch_size=32
 )
 
 def resize_image(res, image):
@@ -612,7 +612,7 @@ def train(
                 plot_images(images, res_log2)
 
 style_gan.grow_model(64)
-style_gan.load_weights(os.path.join("/content/drive/MyDrive/vibgan_64x64.ckpt/vibgan_64x64.ckpt"))
+style_gan.load_weights(os.path.join("vibgan_64x64/vibgan_64x64.ckpt"))
 batch_size = 8
 z = tf.random.normal((batch_size, style_gan.z_dim))
 w = style_gan.mapping(z)
